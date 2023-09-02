@@ -1,19 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Webbit</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     body {
-      width: 400px; /* Set your desired width */
-      height: 300px; /* Set your desired height */
+      width: 400px; /* Adjust the width as needed */
+      padding: 20px;
+    }
+    button {
+      margin: 5px;
+    }
+    #summary {
+      margin-top: 10px;
       padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #progress-container {
+      margin-top: 20px;
+    }
+    #progress-bar {
+      width: 0;
+      transition: width 0.3s ease-in-out;
+    }
+    #progress-text {
+      margin-top: 10px;
     }
   </style>
-  <script src="popup.js"></script>
 </head>
+
 <body>
-  <button id="getSummaryButton">Get Summary</button>
-  <button id="getImportantPointsButton">Give Important Points</button> <!-- New button -->
-  <div id="summary"></div>
+  <h1 class="text-center">Webbit</h1>
+  <div class="text-center">
+    <button id="getSummaryButton" class="btn btn-primary">Get Summary</button>
+    <button id="getImportantPointsButton" class="btn btn-success">Give Important Points</button>
+  </div>
+  <div id="progress-container" class="text-center" style="display: none;">
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+        aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <p id="progress-text">Request in progress...</p>
+  </div>
+  <div id="summary" class="mt-3"></div>
+
+  <script src="popup.js"></script>
 </body>
+
 </html>

@@ -2,8 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const getSummaryButton = document.getElementById('getSummaryButton');
   const getImportantPointsButton = document.getElementById('getImportantPointsButton');
   const summaryDiv = document.getElementById('summary');
+  const progressContainer = document.getElementById('progress-container');
+  const progressBar = document.getElementById('progress-bar');
+  const progressText = document.getElementById('progress-text');
 
   getSummaryButton.addEventListener('click', function () {
+    showProgressBar();
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       if (tabs && tabs.length > 0) {
         const activeTab = tabs[0];
@@ -14,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           function (results) {
             const webpageText = results[0].result;
-            sendTextToAPI("Here is raw text from a webpage; Summarize it: " +webpageText.slice(0, 2500));
+            sendTextToAPI("Here is raw text from a webpage; Summarize it: " +webpageText);
           }
         );
       } else {
@@ -25,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   getImportantPointsButton.addEventListener('click', function () {
+    showProgressBar();
+
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       if (tabs && tabs.length > 0) {
         const activeTab = tabs[0];
@@ -48,6 +54,16 @@ document.addEventListener('DOMContentLoaded', function () {
     return document.body.innerText;
   }
 
+  function showProgressBar() {
+    progressContainer.style.display = 'block';
+    progressBar.style.width = '0%';
+    progressText.innerText = 'Request in progress...';
+  }
+
+  function hideProgressBar() {
+    progressContainer.style.display = 'none';
+  }
+
   function sendTextToAPI(text) {
     const apiKey = "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";
     const apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -68,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       body: JSON.stringify(requestData),
     })
       .then(async (response) => {
+        hideProgressBar();
         if (!response.ok) {
           throw {
             message: "Error fetching summary.",
