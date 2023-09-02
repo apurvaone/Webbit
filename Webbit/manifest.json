@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Web Summary Extension",
+    "name": "Webbit",
     "version": "1.0",
     "description": "Get a summary of the current webpage",
     "permissions": ["storage", "declarativeContent", "activeTab", "scripting"],
