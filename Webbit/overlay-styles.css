@@ -1,0 +1,48 @@
+/* overlay-styles.css */
+.overlay-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .btn-overlay {
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Fixed font size */
+    padding: 10px 20px; /* Fixed padding for consistent button size */
+    margin: 0; /* Remove the margin between buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+  }
+  
+  /* "Get Summary" button */
+  .btn-overlay-summary {
+    background-color: #3498db; /* Blue color for "Get Summary" */
+    color: #fff; /* Set the text color to white */
+    border: none; /* Remove the button border */
+    /* Remove border-radius for square corners */
+  }
+  
+  /* "Give Important Points" button */
+  .btn-overlay-important {
+    background-color: #27ae60; /* Green color for "Give Important Points" */
+    color: #fff; /* Set the text color to white */
+    border: none; /* Remove the button border */
+    /* Remove border-radius for square corners */
+  }
+  
+  /* Hover styles */
+  .btn-overlay:hover {
+    transform: translateY(1px); /* Add a slight click effect */
+  }
+  
+  /* Hover styles for "Get Summary" button */
+  .btn-overlay-summary:hover {
+    background-color: #2980b9; /* Darker color on hover */
+  }
+  
+  /* Hover styles for "Give Important Points" button */
+  .btn-overlay-important:hover {
+    background-color: #219f56; /* Darker color on hover */
+  }
+  

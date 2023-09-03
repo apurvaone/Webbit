@@ -1,29 +1,39 @@
 {
-    "manifest_version": 3,
-    "name": "Webbit",
-    "version": "1.0",
-    "description": "Get a summary of the current webpage",
-    "permissions": ["storage", "declarativeContent", "activeTab", "scripting"],
-    "icons": {
+  "manifest_version": 3,
+  "name": "Webbit",
+  "version": "1.0",
+  "description": "Get a summary of the current webpage",
+  "permissions": ["storage", "declarativeContent", "activeTab", "scripting","tabs" , "webNavigation",
+  "webRequest",
+  "webRequestBlocking",
+  "https://api.openai.com/" 
+
+],
+  "icons": {
+    "48": "icons/cicon48.png",
+    "128": "icons/cicon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/cicon.png",
       "48": "icons/cicon48.png",
       "128": "icons/cicon128.png"
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "icons/cicon.png",
-        "48": "icons/cicon48.png",
-        "128": "icons/cicon128.png"
-      }
-    },
-    "background": {
-      "service_worker": "background.js"
-    },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
     }
-  ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+"content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_end"
   }
-  
+],
+"web_accessible_resources": [
+  {
+    "resources": ["overlay-styles.css"],
+    "matches": ["<all_urls>"]
+  }]
+}

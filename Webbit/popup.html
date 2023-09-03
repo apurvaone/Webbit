@@ -12,6 +12,11 @@
     button {
       margin: 5px;
     }
+    .custom-summary {
+      color: #333; /* Font color for the summary */
+      font-size: 16px; /* Font size for the summary */
+      line-height: 1.5; /* Line height for readability */
+    }
     #summary {
       margin-top: 10px;
       padding: 10px;
@@ -27,6 +32,29 @@
     }
     #progress-text {
       margin-top: 10px;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: flex-end; /* Align buttons to the right */
+      margin-right: 10px; /* Add margin for spacing */
+      margin-top: 10px;
+    }
+    /* Add a custom rule to change the button's background color */
+    .btn-container button {
+      background-color: #2c3e50;
+      padding: 6px 12px; /* Adjust padding for button size */
+      font-size: 14px; /* Adjust font size */
+    }
+    /* Styling for the summaryHeading div */
+    #summaryHeading {
+      background-color: #373739; /* Blue background color */
+      color: #fff; /* White text color */
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 14px; /* Smaller text size */
+      margin-bottom: 10px;
+      display: none; /* Initially hidden */
     }
   </style>
 </head>
@@ -44,7 +72,15 @@
     </div>
     <p id="progress-text">Request in progress...</p>
   </div>
-  <div id="summary" class="mt-3"></div>
+
+  <div id="summaryHeading" class="mt-3"></div>
+
+  <!-- Apply custom-summary class to the summary div -->
+  <div id="summary" class="mt-3 custom-summary"></div>
+
+  <div class="btn-container">
+    <button id="copySummaryButton" class="btn btn-info">Copy</button>
+  </div>
 
   <script src="popup.js"></script>
 </body>
