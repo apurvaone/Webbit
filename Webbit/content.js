@@ -17,14 +17,8 @@ function createOverlayButtons() {
     getSummaryButton.textContent = 'Summary';
     getSummaryButton.addEventListener('click', function () {
 
-        const popupWidth = 400; // Set the width of your popup window
-        const popupHeight = 300; // Set the height of your popup window
-        const popupLeft = window.innerWidth - popupWidth - 20; // Adjust the offset as needed
-        const popupOptions = `width=${popupWidth},height=${popupHeight},left=${popupLeft},top=20`;
-
-
+    
         const webpageText = getWebpageText();
-
         chrome.runtime.sendMessage({ openPopupSummary: true ,  text: webpageText});
 
 
@@ -36,8 +30,7 @@ function createOverlayButtons() {
     getImportantPointsButton.className = 'btn btn-overlay-important';
     getImportantPointsButton.textContent = 'Important Points';
     getImportantPointsButton.addEventListener('click', function () {
-      // Handle the click event for "Give Important Points" button
-      // You can perform actions like sending a message to your background script to initiate important points retrieval
+     
       const webpageText = getWebpageText();
       chrome.runtime.sendMessage({ openPopupPoints: true ,  text: webpageText});
 
@@ -53,7 +46,7 @@ function createOverlayButtons() {
 
     const customStylesheet = document.createElement('link');
     customStylesheet.rel = 'stylesheet';
-    customStylesheet.href = chrome.runtime.getURL('overlay-styles.css'); // Use the correct path to your CSS file
+    customStylesheet.href = chrome.runtime.getURL('overlay-styles.css');
     document.head.appendChild(customStylesheet);
   }
 

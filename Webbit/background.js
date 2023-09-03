@@ -1,21 +1,25 @@
 // background.js
 
+// Listen for incoming messages from the extension's popup or content scripts
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  // Handle message to open the summary popup
   if (message.openPopupSummary) {
-    // Open the extension's default popup as an overlay
+    // Get the current window to determine positioning
     chrome.windows.getCurrent(function (currentWindow) {
+      // Create a new popup window with specific dimensions and position
       chrome.windows.create({
         url: 'popup.html',
         type: 'popup',
-        width: 435, // Set the width of your popup window
-        height: 1000, // Set the height of your popup window
-        left: currentWindow.width - 435, // Adjust the offset as needed
-        top: 150, // Adjust the offset as needed
+        width: 435,
+        height: 1000,
+        left: currentWindow.width - 435,
+        top: 150,
       }, function (popupWindow) {
         // Listen for when the popup window is fully loaded
         chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+          // Check if the tab in the popup is fully loaded
           if (tabId === popupWindow.tabs[0].id && changeInfo.status === 'complete') {
-            // Send the message to the popup script once it's fully loaded
+            // Send a message to the popup script once it's fully loaded
             chrome.tabs.sendMessage(tabId, { action: 'webpageTextSentForSummary', text: message.text });
           }
         });
@@ -23,26 +27,28 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     });
   }
 
+  // Handle message to open the points popup
   if (message.openPopupPoints) {
-    // Open the extension's default popup as an overlay
+    // Get the current window to determine positioning
     chrome.windows.getCurrent(function (currentWindow) {
+      // Create a new popup window with specific dimensions and position
       chrome.windows.create({
         url: 'popup.html',
         type: 'popup',
-        width: 400, // Set the width of your popup window
-        height: 1000, // Set the height of your popup window
-        left: currentWindow.width - 400, // Adjust the offset as needed
-        top: 150, // Adjust the offset as needed
+        width: 400,
+        height: 1000,
+        left: currentWindow.width - 400,
+        top: 150,
       }, function (popupWindow) {
         // Listen for when the popup window is fully loaded
         chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+          // Check if the tab in the popup is fully loaded
           if (tabId === popupWindow.tabs[0].id && changeInfo.status === 'complete') {
-            // Send the message to the popup script once it's fully loaded
+            // Send a message to the popup script once it's fully loaded
             chrome.tabs.sendMessage(tabId, { action: 'webpageTextSentForPoints', text: message.text });
           }
         });
       });
     });
   }
-
 });
