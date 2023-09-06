@@ -3,8 +3,12 @@
 Webbit is a Chrome extension that allows you to quickly summarize the content of the current webpage you are browsing. With just a click, you can get a concise summary of the web content.
 
 Webbit offers two ways to get Summary/Important Points
-* Through the Extension icon from the extension bar in Chrome
-* Through Overlay buttons on the webpage. 
+* Using the Extension icon from the toolbar in Chrome
+<img width="339" alt="popup" src="https://github.com/apurvaone/Webbit/assets/57245377/fc68b455-82ac-4099-8904-e419f4a34816">
+
+* Use overlay buttons on the bottom right of the webpage.
+<img width="254" alt="overlay" src="https://github.com/apurvaone/Webbit/assets/57245377/c6e8491f-8dc6-46f9-b9c0-242b33a90b89">
+
 
 ## Features
 
